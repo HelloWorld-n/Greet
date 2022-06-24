@@ -3,8 +3,8 @@ using static System.Random;
 
 class Program{
 	public static void Main(string[] args){
-		int delay = 20;
-		int delta_delay = 7;
+		int delay = 25;
+		int delta_delay = 10;
 		var rnd = new Random();
 		var now = DateTime.Now;
 		var previous = now;
@@ -23,25 +23,25 @@ class Program{
 			Console.WriteLine($"Last time updated at {now.ToString("yyyy-MM-dd'T'HH:mm:ssK")}。");
 			if (delta_now.TotalSeconds > 5){
 				Console.WriteLine(
-					"There is delay of " + (
+					"There is delay of p" + (
 						(
 							delta_now.TotalDays > 1
 						) ? (
-							$"{delta_now.Days} days + "
-						) : ("") 
+							$"{delta_now.Days}Dt"
+						) : ("t") 
 					) + (
 						(
 							delta_now.TotalHours > 1
 						) ? (
-							$"{delta_now.Hours} hours + "
+							$"{delta_now.Hours}H"
 						) : ("") 
 					) +	(
 						(
 							delta_now.TotalMinutes > 1
 						) ? (
-							$"{delta_now.Minutes} minutes + "
+							$"{delta_now.Minutes}M"
 						) : ("")
-					) + $"{delta_now.Seconds} seconds。"
+					) + $"{delta_now.Seconds}S。"
 				);
 			}
 			if (delta_now.TotalMinutes > 2.5){
