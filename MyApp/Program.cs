@@ -1,9 +1,11 @@
 ﻿using static System.DateTime;
+using static System.Random;
 
 class Program{
 	public static void Main(string[] args){
-		int delay = 15;
-		int delta_delay = 4;
+		int delay = 20;
+		int delta_delay = 7;
+		var rnd = new Random();
 		var now = DateTime.Now;
 		var previous = now;
 		var delta_now = now - previous;
@@ -42,7 +44,7 @@ class Program{
 					) + $"{delta_now.Seconds} seconds。"
 				);
 			}
-			if (delta_now.TotalMinutes > 5){
+			if (delta_now.TotalMinutes > 2.5){
 				Console.WriteLine(
 					"\u001B[48;2;0;0;0m\u001B[38;2;255;0;0m"+
 					"Warning: recommended immediate reset!"+
@@ -50,7 +52,9 @@ class Program{
 				);
 			}
 
-			Thread.Sleep(delay);
+			if (rnd.Next(0, 15) < 1){
+				Thread.Sleep(delay);
+			}
 			delay += delta_delay;
 			delta_delay += 1;
 		}
