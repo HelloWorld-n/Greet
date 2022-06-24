@@ -1,0 +1,15 @@
+/home/user/CSharp/Greet/MyApp/obj/Debug/net6.0/MyApp.csproj.AssemblyReference.cache
+/home/user/CSharp/Greet/MyApp/obj/Debug/net6.0/MyApp.GeneratedMSBuildEditorConfig.editorconfig
+/home/user/CSharp/Greet/MyApp/obj/Debug/net6.0/MyApp.AssemblyInfoInputs.cache
+/home/user/CSharp/Greet/MyApp/obj/Debug/net6.0/MyApp.AssemblyInfo.cs
+/home/user/CSharp/Greet/MyApp/obj/Debug/net6.0/MyApp.csproj.CoreCompileInputs.cache
+/home/user/CSharp/Greet/MyApp/bin/Debug/net6.0/MyApp
+/home/user/CSharp/Greet/MyApp/bin/Debug/net6.0/MyApp.deps.json
+/home/user/CSharp/Greet/MyApp/bin/Debug/net6.0/MyApp.runtimeconfig.json
+/home/user/CSharp/Greet/MyApp/bin/Debug/net6.0/MyApp.dll
+/home/user/CSharp/Greet/MyApp/bin/Debug/net6.0/MyApp.pdb
+/home/user/CSharp/Greet/MyApp/obj/Debug/net6.0/MyApp.dll
+/home/user/CSharp/Greet/MyApp/obj/Debug/net6.0/refint/MyApp.dll
+/home/user/CSharp/Greet/MyApp/obj/Debug/net6.0/MyApp.pdb
+/home/user/CSharp/Greet/MyApp/obj/Debug/net6.0/MyApp.genruntimeconfig.cache
+/home/user/CSharp/Greet/MyApp/obj/Debug/net6.0/ref/MyApp.dll
