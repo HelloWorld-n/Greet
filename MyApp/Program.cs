@@ -2,8 +2,8 @@
 
 class Program{
 	public static void Main(string[] args){
-		int delay = 10;
-		int delta_delay = 1;
+		int delay = 15;
+		int delta_delay = 4;
 		var now = DateTime.Now;
 		var previous = now;
 		var delta_now = now - previous;
