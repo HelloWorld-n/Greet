@@ -4,8 +4,9 @@ using static System.Random;
 class Program{
 	public const String esc = "\u001B"; 
 	public static void Main(string[] args){
-		int delay = 35;
-		int delta_delay = 16;
+		int delay = 40;
+		int delta_delay = 17;
+		int delta_delta_delay = 2;
 		var rnd = new Random();
 		var now = DateTime.Now;
 		var previous = now;
@@ -21,10 +22,10 @@ class Program{
 				delta_now
 			);
 			Console.Clear();		
-			Console.WriteLine($"Last time updated at {now.ToString("yyyy-MM-dd'T'HH:mm:ssK")}。");
+			Console.WriteLine($"{esc}[48;2;0;0;0m{esc}[38;2;64;192;192mLast time updated at {now.ToString("yyyy-MM-dd'T'HH:mm:ssK")}。{esc}[00m");
 			if (delta_now.TotalSeconds > 5){
 				Console.WriteLine(
-					$"{esc}[38;2;127;127;127mThere is delay of P" + (
+					$"{esc}[48;2;0;0;0m{esc}[38;2;127;127;127mThere is delay of P" + (
 						(
 							delta_now.TotalDays > 1
 						) ? (
@@ -53,11 +54,13 @@ class Program{
 				);
 			}
 
-			if (rnd.Next(0, 15) < 1){
-				Thread.Sleep(delay);
+			if (rnd.Next(0, 32) < 5){
+				Thread.Sleep(delay / rnd.Next(3, 7));
+			} else {
+				Thread.Sleep(delta_delay);
 			}
 			delay += delta_delay;
-			delta_delay += 1;
+			delta_delay += delta_delta_delay;
 		}
 	}
 }
