@@ -1,19 +1,47 @@
 ﻿using static System.DateTime;
+using static System.TimeSpan;
 using static System.Random;
 
 class Program{
 	public const String esc = "\u001B"; 
-	public static void Main(string[] args){
-		int delay = 40;
-		int delta_delay = 17;
-		int delta_delta_delay = 2;
-		var rnd = new Random();
-		var now = DateTime.Now;
-		var previous = now;
-		var delta_now = now - previous;
-		while(true){
+	
+	public static Random rnd = new Random();
+	public static DateTime now = DateTime.Now;
+	public static DateTime previous = now;
+	public static TimeSpan delta_now = now - previous;
+	
+	public static void UpdateInfo(){
+		var delay = 55;
+		var delta_delay = 26;
+		var delta_delta_delay = 5;
+		while (true){
+			Thread.Sleep(delay / (rnd.Next(1, 10) * rnd.Next(1, 10)));
 			previous = now;
 			now = DateTime.Now;
+			delay += delta_delay;
+			delta_delay += delta_delta_delay;
+		}
+	}
+
+	public static void UpdateScreen(){
+		const int max_warningShade = 127;
+		var warningShade = 0;
+		var increase_warningShade = false;
+		var warningColor = new int[3];
+		while(true){
+			if (warningShade < 0){
+				warningShade = 0;
+				increase_warningShade = true;
+			}
+			if (warningShade > max_warningShade){
+				warningShade = max_warningShade;
+				increase_warningShade = false;
+			}
+			warningShade += (increase_warningShade? (+1) : (-1));
+			warningColor[0] = warningShade + (255 - max_warningShade); 
+			warningColor[1] = warningShade;
+			warningColor[2] = warningShade;
+
 			delta_now = (
 				now - previous > delta_now
 			) ? (
@@ -46,22 +74,21 @@ class Program{
 					) + $"{delta_now.Seconds}S。{esc}[00m"
 				);
 			}
-			if (delta_now.TotalMinutes > 2.5){
+			if (delta_now.TotalMinutes > 1.5){
 				Console.WriteLine(
-					$"{esc}[48;2;0;0;0m{esc}[38;2;255;127;127m"+
+					$"{esc}[48;2;0;0;0m{esc}[38;2;{warningColor[0]};{warningColor[1]};{warningColor[2]}m"+
 					$"Warning: recommended immediate reset!"+
 					$"{esc}[00m"
 				);
 			}
-
-			if (rnd.Next(0, 32) < 5){
-				Thread.Sleep(delay / rnd.Next(3, 7));
-			} else {
-				Thread.Sleep(delta_delay);
-			}
-			delay += delta_delay;
-			delta_delay += delta_delta_delay;
+			Thread.Sleep(1);
+			
 		}
+	}
+
+	public static void Main(string[] args){
+		new Thread(new ThreadStart(UpdateInfo)).Start();
+		new Thread(new ThreadStart(UpdateScreen)).Start();
 	}
 }
 
