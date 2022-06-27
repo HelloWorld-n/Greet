@@ -1,19 +1,18 @@
 ﻿using static System.DateTime;
 using static System.TimeSpan;
 using static System.Random;
+using static ConsoleUtil;
 
-class Program{
-	public const String esc = "\u001B"; 
-	
+class Program{	
 	public static Random rnd = new Random();
 	public static DateTime now = DateTime.Now;
 	public static DateTime previous = now;
 	public static TimeSpan delta_now = now - previous;
 	
 	public static void UpdateInfo(){
-		var delay = 55;
-		var delta_delay = 26;
-		var delta_delta_delay = 5;
+		var delay = 60;
+		var delta_delay = 28;
+		var delta_delta_delay = 6;
 		while (true){
 			Thread.Sleep(delay / (rnd.Next(1, 10) * rnd.Next(1, 10)));
 			previous = now;
@@ -49,11 +48,15 @@ class Program{
 			) : (
 				delta_now
 			);
-			Console.Clear();		
-			Console.WriteLine($"{esc}[48;2;0;0;0m{esc}[38;2;64;192;192mLast time updated at {now.ToString("yyyy-MM-dd'T'HH:mm:ssK")}。{esc}[00m");
+			ConsoleUtil.ApplyBackgroundColor(0, 0, 0);
+			Console.Clear();	
+			ConsoleUtil.ApplyForegroundColor(64, 192, 192);	
+			Console.WriteLine($"Last time updated at {now.ToString("yyyy-MM-dd'T'HH:mm:ssK")}。");
+
+			ConsoleUtil.ApplyForegroundColor(127, 127, 127);	
 			if (delta_now.TotalSeconds > 5){
 				Console.WriteLine(
-					$"{esc}[48;2;0;0;0m{esc}[38;2;127;127;127mThere is delay of P" + (
+					$"There is delay of P" + (
 						(
 							delta_now.TotalDays > 1
 						) ? (
@@ -71,18 +74,15 @@ class Program{
 						) ? (
 							$"{delta_now.Minutes}M"
 						) : ($"")
-					) + $"{delta_now.Seconds}S。{esc}[00m"
+					) + $"{delta_now.Seconds}S。"
 				);
 			}
 			if (delta_now.TotalMinutes > 1.5){
-				Console.WriteLine(
-					$"{esc}[48;2;0;0;0m{esc}[38;2;{warningColor[0]};{warningColor[1]};{warningColor[2]}m"+
-					$"Warning: recommended immediate reset!"+
-					$"{esc}[00m"
-				);
+				ConsoleUtil.ApplyForegroundColor(warningColor[0], warningColor[1], warningColor[2]);
+				Console.WriteLine($"Warning: recommended immediate reset!");
 			}
+			ConsoleUtil.ApplyDefaultColors();
 			Thread.Sleep(1);
-			
 		}
 	}
 
