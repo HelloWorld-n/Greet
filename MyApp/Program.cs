@@ -55,11 +55,11 @@ class Program{
 			ConsoleUtil.ApplyForegroundColor(128, 255, 255);	
 			Console.Write(now.ToString("yyyy-MM-dd'T'HH:mm:ssK"));
 			ConsoleUtil.ApplyForegroundColor(64, 192, 192);	
-			Console.WriteLine("。");
+			Console.WriteLine($"。");
 
 			ConsoleUtil.ApplyForegroundColor(127, 127, 127);	
 			if (delta_now.TotalSeconds > 5){
-				Console.Write("There is delay of ");
+				Console.Write($"There is delay of ");
 				
 				ConsoleUtil.ApplyForegroundColor(192, 192, 192);	
 				Console.Write(
@@ -84,7 +84,7 @@ class Program{
 					) + $"{delta_now.Seconds}S"
 				);
 				ConsoleUtil.ApplyForegroundColor(127, 127, 127);
-				Console.WriteLine("。");
+				Console.WriteLine($"。");
 			}
 			if (delta_now.TotalMinutes > 1){
 				ConsoleUtil.ApplyForegroundColor(warningColor[0], warningColor[1], warningColor[2]);
