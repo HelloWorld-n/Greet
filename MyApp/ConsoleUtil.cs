@@ -9,7 +9,6 @@ class ConsoleUtil {
 		Console.Write($"{esc}[38;2;{red};{green};{blue}m");
 	}
 
-	
 	public static void ApplyDefaultColors(){
 		Console.Write($"{esc}[00m");
 	}

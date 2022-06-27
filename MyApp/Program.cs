@@ -10,9 +10,9 @@ class Program{
 	public static TimeSpan delta_now = now - previous;
 	
 	public static void UpdateInfo(){
-		var delay = 60;
-		var delta_delay = 28;
-		var delta_delta_delay = 6;
+		var delay = 65;
+		var delta_delay = 30;
+		var delta_delta_delay = 7;
 		while (true){
 			Thread.Sleep(delay / (rnd.Next(1, 10) * rnd.Next(1, 10)));
 			previous = now;
@@ -51,12 +51,19 @@ class Program{
 			ConsoleUtil.ApplyBackgroundColor(0, 0, 0);
 			Console.Clear();	
 			ConsoleUtil.ApplyForegroundColor(64, 192, 192);	
-			Console.WriteLine($"Last time updated at {now.ToString("yyyy-MM-dd'T'HH:mm:ssK")}。");
+			Console.Write($"Last time updated at ");
+			ConsoleUtil.ApplyForegroundColor(128, 255, 255);	
+			Console.Write(now.ToString("yyyy-MM-dd'T'HH:mm:ssK"));
+			ConsoleUtil.ApplyForegroundColor(64, 192, 192);	
+			Console.WriteLine("。");
 
 			ConsoleUtil.ApplyForegroundColor(127, 127, 127);	
 			if (delta_now.TotalSeconds > 5){
-				Console.WriteLine(
-					$"There is delay of P" + (
+				Console.Write("There is delay of ");
+				
+				ConsoleUtil.ApplyForegroundColor(192, 192, 192);	
+				Console.Write(
+					$"P" + (
 						(
 							delta_now.TotalDays > 1
 						) ? (
@@ -74,12 +81,14 @@ class Program{
 						) ? (
 							$"{delta_now.Minutes}M"
 						) : ($"")
-					) + $"{delta_now.Seconds}S。"
+					) + $"{delta_now.Seconds}S"
 				);
+				ConsoleUtil.ApplyForegroundColor(127, 127, 127);
+				Console.WriteLine("。");
 			}
-			if (delta_now.TotalMinutes > 1.5){
+			if (delta_now.TotalMinutes > 1){
 				ConsoleUtil.ApplyForegroundColor(warningColor[0], warningColor[1], warningColor[2]);
-				Console.WriteLine($"Warning: recommended immediate reset!");
+				Console.WriteLine($"Warning: recommended immediate restrart!");
 			}
 			ConsoleUtil.ApplyDefaultColors();
 			Thread.Sleep(1);
@@ -91,4 +100,3 @@ class Program{
 		new Thread(new ThreadStart(UpdateScreen)).Start();
 	}
 }
-
