@@ -10,11 +10,11 @@ class Program{
 	public static TimeSpan delta_now = now - previous;
 	
 	public static void UpdateInfo(){
-		var delay = 65;
-		var delta_delay = 30;
-		var delta_delta_delay = 7;
+		var delay = 70;
+		var delta_delay = 32;
+		var delta_delta_delay = 8;
 		while (true){
-			Thread.Sleep(delay / (rnd.Next(1, 10) * rnd.Next(1, 10)));
+			Thread.Sleep(delay / (rnd.Next(1, 12) * rnd.Next(1, 12)));
 			previous = now;
 			now = DateTime.Now;
 			delay += delta_delay;
@@ -60,7 +60,6 @@ class Program{
 			ConsoleUtil.ApplyForegroundColor(127, 127, 127);	
 			if (delta_now.TotalSeconds > 5){
 				Console.Write($"There is delay of ");
-				
 				ConsoleUtil.ApplyForegroundColor(192, 192, 192);	
 				Console.Write(
 					$"P" + (
@@ -86,7 +85,8 @@ class Program{
 				ConsoleUtil.ApplyForegroundColor(127, 127, 127);
 				Console.WriteLine($"。");
 			}
-			if (delta_now.TotalMinutes > 1){
+			
+			if (delta_now.TotalSeconds > 30){
 				ConsoleUtil.ApplyForegroundColor(warningColor[0], warningColor[1], warningColor[2]);
 				Console.WriteLine($"Warning: recommended immediate restrart!");
 			}
