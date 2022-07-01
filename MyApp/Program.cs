@@ -10,9 +10,9 @@ class Program{
 	public static TimeSpan delta_now = now - previous;
 	
 	public static void UpdateInfo(){
-		var delay = 70;
-		var delta_delay = 32;
-		var delta_delta_delay = 8;
+		var delay = 75;
+		var delta_delay = 34;
+		var delta_delta_delay = 9;
 		while (true){
 			Thread.Sleep(delay / (rnd.Next(1, 12) * rnd.Next(1, 12)));
 			previous = now;
@@ -37,7 +37,7 @@ class Program{
 				increase_warningShade = false;
 			}
 			warningShade += (increase_warningShade? (+1) : (-1));
-			warningColor[0] = warningShade + (255 - max_warningShade); 
+			warningColor[0] = 255; 
 			warningColor[1] = warningShade;
 			warningColor[2] = warningShade;
 
