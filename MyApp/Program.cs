@@ -10,9 +10,9 @@ class Program{
 	public static TimeSpan delta_now = now - previous;
 	
 	public static void UpdateInfo(){
-		var delay = 80;
-		var delta_delay = 36;
-		var delta_delta_delay = 10;
+		var delay = 85;
+		var delta_delay = 38;
+		var delta_delta_delay = 11;
 		while (true){
 			Thread.Sleep(delay / (rnd.Next(1, 12) * rnd.Next(1, 12)));
 			previous = now;
@@ -91,7 +91,7 @@ class Program{
 				Console.WriteLine($"Warning: recommended immediate restrart!");
 			}
 			ConsoleUtil.ApplyDefaultColors();
-			Thread.Sleep(1);
+			Thread.Sleep(50);
 		}
 	}
 
