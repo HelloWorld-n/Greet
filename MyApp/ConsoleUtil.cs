@@ -1,5 +1,5 @@
 class ConsoleUtil {
-	protected const String esc = "\u001B"; 
+	protected const String esc = "\u001B";
 
 	public static void ApplyBackgroundColor(int red, int green, int blue){
 		Console.Write($"{esc}[48;2;{red};{green};{blue}m");
