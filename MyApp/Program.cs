@@ -10,11 +10,11 @@ class Program{
 	public static TimeSpan delta_now = now - previous;
 
 	public static void UpdateInfo(){
-		var delay = 100;
-		var delta_delay = 40;
+		var delay = 150;
+		var delta_delay = 50;
 		var delta_delta_delay = 10;
-		var min_sleep = 2;
-		var max_sleep = 10;
+		var min_sleep = 5;
+		var max_sleep = 15;
 		while (true){
 			Thread.Sleep(delay / (rnd.Next(min_sleep, max_sleep) * rnd.Next(min_sleep, max_sleep)));
 			previous = now;
