@@ -9,8 +9,17 @@ class Program{
 	public static DateTime previous = now;
 	public static TimeSpan delta_now = now - previous;
 
+	public static readonly ConsoleUtil.ConsoleColor[] colors_time = {
+		new ConsoleUtil.ConsoleColor(64, 192, 192),
+		new ConsoleUtil.ConsoleColor(128, 255, 255),
+	};
+	public static readonly ConsoleUtil.ConsoleColor[] colors_delay = {
+		new ConsoleUtil.ConsoleColor(127, 127, 127),
+		new ConsoleUtil.ConsoleColor(192, 192, 192),
+	};
+
 	public static void UpdateInfo(){
-		var delay = 150;
+		var delay = 200;
 		var delta_delay = 50;
 		var delta_delta_delay = 10;
 		var min_sleep = 5;
@@ -52,17 +61,17 @@ class Program{
 			);
 			ConsoleUtil.ApplyBackgroundColor(0, 0, 0);
 			Console.Clear();
-			ConsoleUtil.ApplyForegroundColor(64, 192, 192);
+			ConsoleUtil.ApplyForegroundColor(colors_time[0]);
 			Console.Write($"Last time updated at ");
-			ConsoleUtil.ApplyForegroundColor(128, 255, 255);
+			ConsoleUtil.ApplyForegroundColor(colors_time[1]);
 			Console.Write(now.ToString("yyyy-MM-dd'T'HH:mm:ssK"));
-			ConsoleUtil.ApplyForegroundColor(64, 192, 192);
+			ConsoleUtil.ApplyForegroundColor(colors_time[0]);
 			Console.WriteLine($"。");
 
-			ConsoleUtil.ApplyForegroundColor(127, 127, 127);
+			ConsoleUtil.ApplyForegroundColor(colors_delay[0]);
 			if (delta_now.TotalSeconds > 5){
 				Console.Write($"There is delay of ");
-				ConsoleUtil.ApplyForegroundColor(192, 192, 192);
+				ConsoleUtil.ApplyForegroundColor(colors_delay[1]);
 				Console.Write(
 					$"P" + (
 						(
@@ -84,7 +93,7 @@ class Program{
 						) : ($"")
 					) + $"{delta_now.Seconds}S"
 				);
-				ConsoleUtil.ApplyForegroundColor(127, 127, 127);
+				ConsoleUtil.ApplyForegroundColor(colors_delay[0]);
 				Console.WriteLine($"。");
 			}
 
