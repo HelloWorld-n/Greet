@@ -19,8 +19,8 @@ class Program{
 	};
 
 	public static void UpdateInfo(){
-		var delay = 200;
-		var delta_delay = 50;
+		var delay = 1000;
+		var delta_delay = 100;
 		var delta_delta_delay = 10;
 		var min_sleep = 5;
 		var max_sleep = 15;
@@ -59,7 +59,7 @@ class Program{
 			) : (
 				delta_now
 			);
-			ConsoleUtil.ApplyBackgroundColor(0, 0, 0);
+			ConsoleUtil.ApplyBackgroundColor(ConsoleUtil.ConsoleColor.Black);
 			Console.Clear();
 			ConsoleUtil.ApplyForegroundColor(colors_time[0]);
 			Console.Write($"Last time updated at ");

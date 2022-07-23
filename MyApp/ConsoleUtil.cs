@@ -1,10 +1,24 @@
 public class ConsoleUtil {
-
 	public class ConsoleColor {
 		private int _red;
 		private int _green;
 		private int _blue;
 		
+		public static readonly ConsoleColor Black = new ConsoleColor(0, 0, 0);
+		public static readonly ConsoleColor DarkGray = new ConsoleColor(63, 63, 63);
+		public static readonly ConsoleColor Gray = new ConsoleColor(127, 127, 127);
+		public static readonly ConsoleColor BrightGray = new ConsoleColor(191, 191, 191);
+		public static readonly ConsoleColor White = new ConsoleColor(255, 255, 255);
+
+		public static readonly ConsoleColor Red = new ConsoleColor(255, 0, 0);
+		public static readonly ConsoleColor Orange = new ConsoleColor(191, 63, 0);
+		public static readonly ConsoleColor Yellow = new ConsoleColor(127, 127, 0);
+		public static readonly ConsoleColor Lime = new ConsoleColor(63, 191, 0);
+		public static readonly ConsoleColor Green = new ConsoleColor(0, 255, 0);
+		public static readonly ConsoleColor Cyan = new ConsoleColor(0, 127, 127);
+		public static readonly ConsoleColor Blue = new ConsoleColor(0, 0, 255);
+		public static readonly ConsoleColor Purple = new ConsoleColor(127, 0, 127);
+
 		public int red {
 			get {
 				return _red;
